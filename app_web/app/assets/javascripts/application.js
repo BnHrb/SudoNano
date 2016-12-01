@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $('#bot-button').on('click', function(event) {
+    $.ajax({
+      url: '/ask_bot',
+      type: 'json',
+      method: 'get',
+      data: { query: $('#query').val() },
+      success: function(data) {
+        $('.bot-response').removeClass('hide');
+        $('#bot-response').html(data['response']);
+        $('#query').val('');
+      }
+    });
+  });
+});
