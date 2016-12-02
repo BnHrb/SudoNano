@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require bootstrap-sprockets
 
 $(document).ready(function(){
   $('#bot-button').on('click', function(event) {
@@ -24,7 +26,9 @@ $(document).ready(function(){
       data: { query: $('#query').val() },
       success: function(data) {
         $('.bot-response').removeClass('hide');
-        $('#bot-response').html(data['response']['result']['fulfillment']['speech']);
+	res = data['response']['result']['fulfillment']['speech'] == "" ? 'Sorry, I don\'t understand :(' : data['response']['result']['fulfillment']['speech'];
+	console.log(res)
+        $('#bot-response').html(res);
         $('#query').val('');
       }
     });
