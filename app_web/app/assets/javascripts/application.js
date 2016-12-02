@@ -25,11 +25,13 @@ $(document).ready(function(){
       method: 'get',
       data: { query: $('#query').val() },
       success: function(data) {
-        $('.bot-response').removeClass('hide');
 	res = data['response']['result']['fulfillment']['speech'] == "" ? 'Sorry, I don\'t understand :(' : data['response']['result']['fulfillment']['speech'];
-	console.log(res)
-        $('#bot-response').html(res);
-        $('#query').val('');
+	var query = $('#query').val();
+	$("#historique").append('<li class="list-group-item"> [you] '+query+"</li>");
+	$('#callout-alerts-no-default').removeClass('hide');
+	$("#historique").append('<li class="list-group-item list-group-item-danger"> [Botcher] '+res+"</li>");
+	$('#query').val('');
+
       }
     });
   });
