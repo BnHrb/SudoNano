@@ -24,7 +24,7 @@ $(document).ready(function(){
       data: { query: $('#query').val() },
       success: function(data) {
         $('.bot-response').removeClass('hide');
-        $('#bot-response').html(data['response']);
+        $('#bot-response').html(data['response']['result']['fulfillment']['speech']);
         $('#query').val('');
       }
     });
