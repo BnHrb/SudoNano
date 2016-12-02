@@ -17,16 +17,23 @@
 //= require bootstrap-sprockets
 $(document).ready(function(){
   $('#bot-button').on('click', function(event) {
+
     $.ajax({
       url: '/ask_bot',
       type: 'json',
       method: 'get',
       data: { query: $('#query').val() },
       success: function(data) {
-        $('.bot-response').removeClass('hide');
-        $('#bot-response').html(data['response']);
+	var query = $('#query').val();
+	$("#historique").append('<li class="list-group-item"> [you] '+query+"</li>");
+	$('#callout-alerts-no-default').removeClass('hide');
+	$("#historique").append('<li class="list-group-item list-group-item-danger"> [Botcher] '+data['response']+"</li>");
+
+
         $('#query').val('');
       }
     });
+
+
   });
 });
