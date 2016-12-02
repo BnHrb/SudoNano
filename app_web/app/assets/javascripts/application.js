@@ -19,6 +19,7 @@
 
 $(document).ready(function(){
   $('#bot-button').on('click', function(event) {
+
     $.ajax({
       url: '/ask_bot',
       type: 'json',
@@ -34,5 +35,7 @@ $(document).ready(function(){
 
       }
     });
+
+
   });
 });
