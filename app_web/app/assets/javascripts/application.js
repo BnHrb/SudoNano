@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
+//= require bootstrap-sprockets
 $(document).ready(function(){
   $('#bot-button').on('click', function(event) {
     $.ajax({
